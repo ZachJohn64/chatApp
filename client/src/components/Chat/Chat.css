@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 100%;
     background-color: #1A1A1D;
   }
   
@@ -16,6 +16,7 @@
     height: 60%;
     width: 35%;
   }
+  
   
   @media (min-width: 320px) and (max-width: 480px) {
     .outerContainer {
