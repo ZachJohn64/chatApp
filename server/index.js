@@ -7,6 +7,7 @@ const router = require('./router')
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
+const cors = require('cors')
 
 io.on('connection', (socket) => {
     socket.on('join', ({ name, room }, callback) => {
@@ -43,7 +44,8 @@ io.on('connection', (socket) => {
     })
 })
 
-app.use(router)
+app.use(router);
+app.use(cors());
 
 server.listen(PORT, () => console.log(`Server has started on port ${PORT}`));
 
