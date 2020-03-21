@@ -7,7 +7,7 @@ const router = require('./router')
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
-const path = require('path');
+
 const cors = require('cors')
 
 io.on('connection', (socket) => {
@@ -46,14 +46,6 @@ io.on('connection', (socket) => {
 })
 
 app.use(router);
-// Serve static assets if in production
-if (process.env.NODE_ENV === 'production') {
-    // Set static folder
-    app.use(express.static('client/build'));
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-    });
-}
 app.use(cors());
 
 server.listen(PORT, () => console.log(`Server has started on port ${PORT}`));
